@@ -1,7 +1,17 @@
 #include<iostream>
+#include<string>
+#include<cstdlib>
+#include<ctime>
 
-class GameBoard
+using std::cin;
+using std::cout;
+using std::string;
+
+class Game
 {
+private:
+string gameBoard[3][3];
+
 public:
   void clearBoard()
   {
@@ -12,23 +22,30 @@ public:
         gameBoard[i][j] = "";
       }
     }
+
   }
   
   void showBoard()
   {
-  cin << |#|#|#|
-      << -------
-      << |#|#|#|
-      << -------
-      << |#|#|#|
-      
-  
-  
+//  cout << ""
+  cout << "|_____|_____|_____|"<<'\n';
+//  cout << ""
+  cout << "|_____|_____|_____|"<<'\n';
+//  cout << ""
+  cout << "|     |     |     |"<<'\n';
   }	
-}
 
-void clearBoard();
-void showBoard();
+  int startingPlayer()
+  {
+    srand(static_cast<unsigned int>(time(nullptr)));
+    int randomNumber = rand() % 2;
+    return randomNumber;
+  }
+
+};
+
+//void clearBoard();
+//void showBoard();
 int checkOpenSpaces();
 void playerTurn();
 void cpuTurn();
@@ -42,63 +59,20 @@ int main(void)
 using std::cin;
 using std::cout;
 
-char gameBoard[3][3];
+int startPlayer;
 
+Game newGame;
+newGame.clearBoard();
+newGame.showBoard();
+startPlayer = newGame.startingPlayer();
+if (startPlayer == 1)
+      {
+        cout << "You make the first move.";
+      }
+    else
+      {
+        cout << "CPU makes the first move.";
+      } 
 
-
-
-	
-	
-	
-	
-	
 return 0;	
-}
-
-void clearBoard()
-{
-  for(int i = 0; i < 3; i++)
-  {
-    for(int j = 0; j < 3; j++)
-  	{
-      gameBoard[i][j] = "";
-    }
-  
-  }	
-}
-
-void showBoard()
-{
-	
-	
-}
-
-int checkOpenSpaces()
-{
-	
-	
-}
-
-void playerTurn()
-{
-	
-	
-}
-
-void cpuTurn()
-{
-	
-	
-}
-
-char winnerCheck()
-{
-	
-	
-}
-
-void showWinner()
-{
-	
-	
 }
