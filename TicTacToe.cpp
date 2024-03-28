@@ -5,22 +5,20 @@
 
 using namespace std;
 
-const char player = 'X';
-const char cpu = 'O';
-
-class Game
+class TicTacToe
 {
 private:
-string gameBoard[3][3];
-
+char gameBoard[3][3];
+char playerSymbol;
 public:
-  void clearBoard()
+  TicTacToe(char player)
   {
-    for(int i = 0; i < 3; i++)
+    this->playerSymbol;
+	for(int i = 0; i < 3; i++)
     {
-      for(int j = 0; j < 3; j++)
+	  for(int j = 0; j < 3; j++)
   	  {
-        gameBoard[i][j] = "";
+        gameBoard[i][j] ="";
       }
     }
 
@@ -28,12 +26,7 @@ public:
   
   void showBoard()
   {
-//  cout << ""
-  cout << "|_____|_____|_____|"<<'\n';
-//  cout << ""
-  cout << "|_____|_____|_____|"<<'\n';
-//  cout << ""
-  cout << "|     |     |     |"<<'\n';
+    
   }	
 
   int startingPlayer()
@@ -74,15 +67,8 @@ public:
 return "";    
   }
 
-};
 
-class Player
-{
-private:
-string gameBoard[3][3];
- 
-public: 
-  void playerTurn()
+    void playerTurn()
   {
     int x,y;
     
@@ -106,6 +92,8 @@ public:
     }
     while (gameBoard[x][y] != ""); 
   }
+};
+
 
   //void cpuTurn()
   
@@ -137,7 +125,7 @@ cout << "\nPress enter to continue:";
 cin.get();
 system("cls");
 
-Game newGame;
+TicTacToe newGame9(X);
 
 startPlayer = newGame.startingPlayer();
 if (startPlayer == 1)
