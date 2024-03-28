@@ -1,11 +1,9 @@
 #include<iostream>
 #include<string>
-#include<cstdlib>
+#include<stdlib.h>
 #include<ctime>
 
-using std::cin;
-using std::cout;
-using std::string;
+using namespace std;
 
 const char player = 'X';
 const char cpu = 'O';
@@ -45,6 +43,37 @@ public:
     return randomNumber;
   }
 
+  string winnerCheck()
+  {
+//rows    
+	for(int i = 0; i < 3; i++)
+  	{
+	  if(gameBoard[i][0] == gameBoard[i][1] && gameBoard[i][2] == gameBoard[i][0])
+	  {
+	  	return gameBoard[i][0];
+	  }
+	
+	}
+//columns  	
+  	for(int i = 0; i < 3; i++)
+  	{
+	  if(gameBoard[0][i] == gameBoard[1][i] && gameBoard[0][i] == gameBoard[2][i])
+	  {
+	    return gameBoard[0][i];
+	  }
+	}
+//diagonals	
+    if(gameBoard[0][0] == gameBoard[1][1] && gameBoard[0][0] == gameBoard[2][2])	
+    {
+      return gameBoard[0][0];
+	} 	
+    if(gameBoard[0][2] == gameBoard[1][1] && gameBoard[0][2] == gameBoard[2][0]) 
+    {
+	  return gameBoard[0][2];
+	}
+return "";    
+  }
+
 };
 
 class Player
@@ -78,6 +107,8 @@ public:
     while (gameBoard[x][y] != ""); 
   }
 
+  //void cpuTurn()
+  
 
 
 
@@ -97,23 +128,36 @@ void showWinner();
 
 int main(void)
 {
-using std::cin;
-using std::cout;
 
 int startPlayer;
 
+cout << "Tic Tac Toe game\n";
+cout << "Choose a row and column to mark your spot. Mark three in a row by line or diagonal and you win.\n";
+cout << "\nPress enter to continue:";
+cin.get();
+system("cls");
+
 Game newGame;
-newGame.clearBoard();
-newGame.showBoard();
+
 startPlayer = newGame.startingPlayer();
 if (startPlayer == 1)
       {
-        cout << "You make the first move.";
+        cout << "You have first turn.\n";
       }
     else
       {
-        cout << "CPU makes the first move.";
-      } 
+        cout << "CPU has first turn.\n";
+      }
+
+cout << "\nPress enter to start game.";
+
+cin.get();
+
+system("cls");
+
+newGame.clearBoard();
+newGame.showBoard();
+ 
 
 return 0;	
 }
