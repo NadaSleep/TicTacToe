@@ -7,6 +7,9 @@ using std::cin;
 using std::cout;
 using std::string;
 
+const char player = 'X';
+const char cpu = 'O';
+
 class Game
 {
 private:
@@ -54,18 +57,25 @@ public:
   {
     int x,y;
     
-    
+    do
     {
       cout << "Choose row 1-3:";
         cin >> x;
       
       cout << "Choose column 1-3:";
         cin >> y;
-      
-
-
-
+    
+	  if (gameBoard[x][y]!="")  
+      {
+	    cout << "Please choose an open space.";
+      }
+      else
+      { 
+        gameBoard[x][y] = player;
+	    break;	
+	  }
     }
+    while (gameBoard[x][y] != ""); 
   }
 
 
