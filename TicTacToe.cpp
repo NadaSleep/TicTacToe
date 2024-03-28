@@ -44,6 +44,37 @@ public:
 
 };
 
+class Player
+{
+private:
+string gameBoard[3][3];
+ 
+public: 
+  void playerTurn()
+  {
+    int x,y;
+    
+    
+    {
+      cout << "Choose row 1-3:";
+        cin >> x;
+      
+      cout << "Choose column 1-3:";
+        cin >> y;
+      
+
+
+
+    }
+  }
+
+
+
+
+};
+
+
+
 //void clearBoard();
 //void showBoard();
 int checkOpenSpaces();
