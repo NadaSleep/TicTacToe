@@ -11,6 +11,8 @@ private:
 char gameBoard[3][3];
 char playerSymbol,cpuSymbol;
 public:
+
+//Creates the board and assigns a symbol to the player and cpu
   TicTacToe(char playerSymbol,char cpuSymbol) : playerSymbol(playerSymbol),cpuSymbol(cpuSymbol)
   {
 	for(int i = 0; i < 3; i++)
@@ -22,7 +24,8 @@ public:
     }
 
   }
-  
+
+//Shows the current state of the board  
 void showBoard()
   {
     for (int i = 0; i < 3; i++)
@@ -31,7 +34,7 @@ void showBoard()
       {
         if (gameBoard[i][j] == ' ') 
         {
-          cout << '0';
+          cout << '*';
         }
         else 
         {
@@ -44,6 +47,7 @@ void showBoard()
    cout << endl;
   }
 
+//Decides who goes first
   int startingPlayer()
   {
     srand(static_cast<unsigned int>(time(nullptr)));
@@ -51,6 +55,7 @@ void showBoard()
     return randomNumber;
   }
 
+//Checks to see if there is a winner
   char winnerCheck()
   {
 //rows    
@@ -82,6 +87,7 @@ void showBoard()
 return ' ';    
   }
 
+//Players turn
   void playerTurn()
   {
     int x,y;
@@ -111,6 +117,7 @@ return ' ';
   }
 
 
+//Keeps track of open spaces
   int checkOpenSpaces()
   {
     int openSpaces = 9;
@@ -147,6 +154,7 @@ return ' ';
 
 //void showWinner();
 
+//The game if cpu goes first
   void cpuPlay()
   {
     char winner;
@@ -166,6 +174,7 @@ return ' ';
     while (true);
   }
 
+//The game if player goes first
   void humanPlay()
   {
     char winner;
@@ -201,7 +210,7 @@ system("cls");
 
 cout <<"Would you like to be X or O:";
 cin >> playerSymbol;
-
+//Assigns symbol to the cpu
 if(playerSymbol == 'x' || playerSymbol == 'X'){
   cpuSymbol = 'O';
 }
@@ -211,9 +220,9 @@ else {
 
 cin.get();
 system("cls");
-
+//New game object
 TicTacToe newGame(playerSymbol,cpuSymbol);
-
+//Depending on who goes first the game method is called
 startPlayer = newGame.startingPlayer();
 if (startPlayer == 1)
       {
