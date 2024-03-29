@@ -156,16 +156,23 @@ return ' ';
   void cpuPlay()
   {
     char winner;
+    int remainingSpaces;
     
     do {
     cpuTurn();
     showBoard();
-    winner = winnerCheck();
+    remainingSpaces = checkOpenSpaces(); 
+	winner = winnerCheck();
     if (winner != ' ')
-    {	
+     {	
     cout << "The winner is " << winner << endl;    
     break;
     }
+    if ( winner == ' ' && remainingSpaces == 0)
+    {
+    cout << "Tie game!" << endl;
+    break;
+	}
     playerTurn();
     showBoard();
     winner = winnerCheck();
@@ -177,17 +184,24 @@ return ' ';
   void humanPlay()
   {
     char winner;
+    int remainingSpaces;
     
-    do {
+	do {
     showBoard();
     playerTurn();
     showBoard();
+    remainingSpaces = checkOpenSpaces();
     winner = winnerCheck();
     if (winner != ' ')
     {	
     cout << "The winner is " << winner << endl;    
     break;
     }
+    if ( winner == ' ' && remainingSpaces == 0)
+    {
+    cout << "Tie game!" << endl;
+    break;
+	}
     cpuTurn();
     winner = winnerCheck();
     }
