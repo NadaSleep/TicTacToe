@@ -10,8 +10,8 @@ class TicTacToe
 private:
 char gameBoard[3][3];
 char playerSymbol,cpuSymbol;
-public:
 
+public:
 //Creates the board and assigns a symbol to the player and cpu
   TicTacToe(char playerSymbol,char cpuSymbol) : playerSymbol(playerSymbol),cpuSymbol(cpuSymbol)
   {
@@ -63,6 +63,7 @@ void showBoard()
   	{
 	  if(gameBoard[i][0] != '*' && gameBoard[i][0] == gameBoard[i][1] && gameBoard[i][0] == gameBoard[i][2])
 	  {
+
 	  	return gameBoard[i][0];
 	  }
 	
@@ -70,8 +71,9 @@ void showBoard()
 //columns  	
   	for(int i = 0; i < 3; i++)
   	{
-	  if(gameBoard[i][0] != '*' && gameBoard[0][i] == gameBoard[1][i] && gameBoard[0][i] == gameBoard[2][i])
+	  if(gameBoard[0][i] != '*' && gameBoard[0][i] == gameBoard[1][i] && gameBoard[0][i] == gameBoard[2][i])
 	  {
+
 	    return gameBoard[0][i];
 	  }
 	}
@@ -80,7 +82,7 @@ void showBoard()
     {
       return gameBoard[0][0];
 	} 	
-    if(gameBoard[0][0] != '*' && gameBoard[0][2] == gameBoard[1][1] && gameBoard[0][2] == gameBoard[2][0]) 
+    if(gameBoard[0][2] != '*' && gameBoard[0][2] == gameBoard[1][1] && gameBoard[0][2] == gameBoard[2][0]) 
     {
 	  return gameBoard[0][2];
 	}
@@ -150,10 +152,6 @@ return ' ';
     }
   }
 
-
-
-//void showWinner();
-
 //The game if cpu goes first
   void cpuPlay()
   {
@@ -164,8 +162,9 @@ return ' ';
     showBoard();
     winner = winnerCheck();
     if (winner != ' ')
-    {
-     break;
+    {	
+    cout << "The winner is " << winner << endl;    
+    break;
     }
     playerTurn();
     showBoard();
@@ -185,11 +184,11 @@ return ' ';
     showBoard();
     winner = winnerCheck();
     if (winner != ' ')
-    {
-      break;
+    {	
+    cout << "The winner is " << winner << endl;    
+    break;
     }
     cpuTurn();
-    showBoard();
     winner = winnerCheck();
     }
     while (true);
