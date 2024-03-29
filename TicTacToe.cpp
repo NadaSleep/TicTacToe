@@ -11,7 +11,7 @@ private:
 char gameBoard[3][3];
 char playerSymbol,cpuSymbol;
 public:
-  TicTacToe(char player) : playerSymbol(player)
+  TicTacToe(char playerSymbol,char cpuSymbol) : playerSymbol(playerSymbol),cpuSymbol(cpuSymbol)
   {
 	for(int i = 0; i < 3; i++)
     {
@@ -38,10 +38,10 @@ void showBoard()
           cout << gameBoard[i][j];
         }
         cout << "";
-
       }  
       cout << endl;
     } 
+   cout << endl;
   }
 
   int startingPlayer()
@@ -56,7 +56,7 @@ void showBoard()
 //rows    
 	for(int i = 0; i < 3; i++)
   	{
-	  if(gameBoard[i][0] == gameBoard[i][1] && gameBoard[i][2] == gameBoard[i][0])
+	  if(gameBoard[i][0] != '*' && gameBoard[i][0] == gameBoard[i][1] && gameBoard[i][0] == gameBoard[i][2])
 	  {
 	  	return gameBoard[i][0];
 	  }
@@ -65,25 +65,24 @@ void showBoard()
 //columns  	
   	for(int i = 0; i < 3; i++)
   	{
-	  if(gameBoard[0][i] == gameBoard[1][i] && gameBoard[0][i] == gameBoard[2][i])
+	  if(gameBoard[i][0] != '*' && gameBoard[0][i] == gameBoard[1][i] && gameBoard[0][i] == gameBoard[2][i])
 	  {
 	    return gameBoard[0][i];
 	  }
 	}
 //diagonals	
-    if(gameBoard[0][0] == gameBoard[1][1] && gameBoard[0][0] == gameBoard[2][2])	
+    if(gameBoard[0][0] != '*' && gameBoard[0][0] == gameBoard[1][1] && gameBoard[0][0] == gameBoard[2][2])	
     {
       return gameBoard[0][0];
 	} 	
-    if(gameBoard[0][2] == gameBoard[1][1] && gameBoard[0][2] == gameBoard[2][0]) 
+    if(gameBoard[0][0] != '*' && gameBoard[0][2] == gameBoard[1][1] && gameBoard[0][2] == gameBoard[2][0]) 
     {
 	  return gameBoard[0][2];
 	}
 return ' ';    
   }
 
-
-    void playerTurn()
+  void playerTurn()
   {
     int x,y;
     
@@ -143,18 +142,50 @@ return ' ';
       gameBoard[x][y] = cpuSymbol;
     }
   }
+
+
+
+//void showWinner();
+
+  void cpuPlay()
+  {
+    char winner;
+    
+    do {
+    cpuTurn();
+    showBoard();
+    winner = winnerCheck();
+    if (winner != ' ')
+    {
+     break;
+    }
+    playerTurn();
+    showBoard();
+    winner = winnerCheck();
+    }
+    while (true);
+  }
+
+  void humanPlay()
+  {
+    char winner;
+    
+    do {
+    showBoard();
+    playerTurn();
+    showBoard();
+    winner = winnerCheck();
+    if (winner != ' ')
+    {
+      break;
+    }
+    cpuTurn();
+    showBoard();
+    winner = winnerCheck();
+    }
+    while (true);
+  }
 };
-
-
-//void clearBoard();
-//void showBoard();
-int checkOpenSpaces();
-void playerTurn();
-void cpuTurn();
-char winnerCheck();
-void showWinner();
-
-
 
 int main(void)
 {
@@ -181,33 +212,19 @@ else {
 cin.get();
 system("cls");
 
-TicTacToe newGame(playerSymbol);
+TicTacToe newGame(playerSymbol,cpuSymbol);
 
 startPlayer = newGame.startingPlayer();
 if (startPlayer == 1)
       {
         cout << "You have first turn.\n";
-        newGame.showBoard();
-        newGame.playerTurn();
-        newGame.showBoard();
-//        newGame.checkWinner();
+        newGame.humanPlay();
       }
     else
       {
-        cout << "CPU has first turn.\n";
-//        newGame.cpuTurn()
+        cout << "CPU has first turn.\n";         
+        newGame.cpuPlay();
       }
-
-//cout << "\nPress enter to start game.";
-//cin.get();
-//system("cls");
-//
-//newGame.showBoard();
-
-cout << "I AM FREE";
-
-
- 
 
 return 0;	
 }
