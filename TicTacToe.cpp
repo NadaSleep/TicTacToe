@@ -9,25 +9,40 @@ class TicTacToe
 {
 private:
 char gameBoard[3][3];
-char playerSymbol;
+char playerSymbol,cpuSymbol;
 public:
-  TicTacToe(char player)
+  TicTacToe(char player) : playerSymbol(player)
   {
-    this->playerSymbol;
 	for(int i = 0; i < 3; i++)
     {
 	  for(int j = 0; j < 3; j++)
   	  {
-        gameBoard[i][j] ="";
+        gameBoard[i][j] = '*';
       }
     }
 
   }
   
-  void showBoard()
+void showBoard()
   {
-    
-  }	
+    for (int i = 0; i < 3; i++)
+    {
+      for(int j = 0; j < 3; j++)
+      {
+        if (gameBoard[i][j] == ' ') 
+        {
+          cout << '0';
+        }
+        else 
+        {
+          cout << gameBoard[i][j];
+        }
+        cout << "";
+
+      }  
+      cout << endl;
+    } 
+  }
 
   int startingPlayer()
   {
@@ -36,7 +51,7 @@ public:
     return randomNumber;
   }
 
-  string winnerCheck()
+  char winnerCheck()
   {
 //rows    
 	for(int i = 0; i < 3; i++)
@@ -64,7 +79,7 @@ public:
     {
 	  return gameBoard[0][2];
 	}
-return "";    
+return ' ';    
   }
 
 
@@ -74,34 +89,61 @@ return "";
     
     do
     {
-      cout << "Choose row 1-3:";
+      cout << "Choose row 1-3:\n";
         cin >> x;
       
-      cout << "Choose column 1-3:";
+      cout << "Choose column 1-3:\n";
         cin >> y;
     
-	  if (gameBoard[x][y]!="")  
+      x--;
+      y--;      
+
+	  if (gameBoard[x][y] != '*')  
       {
 	    cout << "Please choose an open space.";
       }
       else
       { 
-        gameBoard[x][y] = player;
+        gameBoard[x][y] = playerSymbol;
 	    break;	
 	  }
     }
-    while (gameBoard[x][y] != ""); 
+    while (gameBoard[x][y] != ' '); 
+  }
+
+
+  int checkOpenSpaces()
+  {
+    int openSpaces = 9;
+    for (int i = 0; i < 3; i++)
+    {
+      for (int j = 0; j < 3; j++) 
+      {
+        if (gameBoard[i][j] != '*')
+        { 
+          openSpaces--;
+        }  
+      }
+    } 
+  return openSpaces;
+  }
+
+
+  void cpuTurn()
+  {
+    int x,y;
+    if(checkOpenSpaces() > 0)
+    {
+      do
+      {
+        x = rand() % 3;
+        y = rand() % 3;
+      }
+      while (gameBoard[x][y] != '*');
+      gameBoard[x][y] = cpuSymbol;
+    }
   }
 };
-
-
-  //void cpuTurn()
-  
-
-
-
-};
-
 
 
 //void clearBoard();
@@ -118,6 +160,7 @@ int main(void)
 {
 
 int startPlayer;
+char playerSymbol,cpuSymbol;
 
 cout << "Tic Tac Toe game\n";
 cout << "Choose a row and column to mark your spot. Mark three in a row by line or diagonal and you win.\n";
@@ -125,26 +168,45 @@ cout << "\nPress enter to continue:";
 cin.get();
 system("cls");
 
-TicTacToe newGame9(X);
+cout <<"Would you like to be X or O:";
+cin >> playerSymbol;
+
+if(playerSymbol == 'x' || playerSymbol == 'X'){
+  cpuSymbol = 'O';
+}
+else {
+  cpuSymbol = 'X';
+}
+
+cin.get();
+system("cls");
+
+TicTacToe newGame(playerSymbol);
 
 startPlayer = newGame.startingPlayer();
 if (startPlayer == 1)
       {
         cout << "You have first turn.\n";
+        newGame.showBoard();
+        newGame.playerTurn();
+        newGame.showBoard();
+//        newGame.checkWinner();
       }
     else
       {
         cout << "CPU has first turn.\n";
+//        newGame.cpuTurn()
       }
 
-cout << "\nPress enter to start game.";
+//cout << "\nPress enter to start game.";
+//cin.get();
+//system("cls");
+//
+//newGame.showBoard();
 
-cin.get();
+cout << "I AM FREE";
 
-system("cls");
 
-newGame.clearBoard();
-newGame.showBoard();
  
 
 return 0;	
