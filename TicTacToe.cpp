@@ -1,3 +1,8 @@
+/*
+Tyler Sexton
+Lab 9
+TicTacToe game
+*/
 #include<iostream>
 #include<string>
 #include<stdlib.h>
@@ -136,7 +141,7 @@ return ' ';
   return openSpaces;
   }
 
-
+//Handles the CPU turn
   void cpuTurn()
   {
     int x,y;
@@ -223,6 +228,7 @@ system("cls");
 
 cout <<"Would you like to be X or O:";
 cin >> playerSymbol;
+
 //Assigns symbol to the cpu
 if(playerSymbol == 'x' || playerSymbol == 'X'){
   cpuSymbol = 'O';
@@ -233,8 +239,10 @@ else {
 
 cin.get();
 system("cls");
+
 //New game object
 TicTacToe newGame(playerSymbol,cpuSymbol);
+
 //Depending on who goes first the game method is called
 startPlayer = newGame.startingPlayer();
 if (startPlayer == 1)
