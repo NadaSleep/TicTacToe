@@ -214,6 +214,33 @@ return ' ';
   }
 };
 
+class threeDTicTacToe : public TicTacToe
+{
+  TicTacToe(char playerSymbol,char cpuSymbol) : playerSymbol(playerSymbol),cpuSymbol(cpuSymbol)
+  {
+	for(int i = 0; i < 3; i++)
+    {
+	  for (int j = 0; j < 3; j++)   
+		
+		for(int k = 0; j < 3; j++)
+  	    {
+          gameBoard[i][j][k] = '*';
+        }
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+};
+
 int main(void)
 {
 
