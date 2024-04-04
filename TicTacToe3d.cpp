@@ -12,11 +12,11 @@ using namespace std;
 
 class TicTacToe
 {
-public:
+private:
 char gameBoard[3][3];
-char playerSymbol,cpuSymbol;
 
 public:
+  char playerSymbol,cpuSymbol;
 //Creates the board and assigns a symbol to the player and cpu
   TicTacToe(char playerSymbol,char cpuSymbol) : playerSymbol(playerSymbol),cpuSymbol(cpuSymbol)
   {
@@ -215,8 +215,10 @@ return ' ';
 };
 
 class TicTacToeThreeD : public TicTacToe
-{
-  TicTacToe3D(char playerSymbol,char cpuSymbol) 
+{ private:
+  char gameBoard3d[3][3][3];
+  
+  void TicTacToe3D(char playerSymbol,char cpuSymbol)
   {
 	for(int i = 0; i < 3; i++)
     {
@@ -224,11 +226,12 @@ class TicTacToeThreeD : public TicTacToe
 		
 		for(int k = 0; k < 3; k++)
   	    {
-          gameBoard[i][j][k] = '*';
+          gameBoard3d[i][j][k] = '*';
         }
     }
   }
 };
+
 
 int main(void)
 {
