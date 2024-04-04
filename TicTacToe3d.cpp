@@ -12,7 +12,7 @@ using namespace std;
 
 class TicTacToe
 {
-private:
+public:
 char gameBoard[3][3];
 char playerSymbol,cpuSymbol;
 
@@ -214,31 +214,20 @@ return ' ';
   }
 };
 
-class threeDTicTacToe : public TicTacToe
+class TicTacToeThreeD : public TicTacToe
 {
-  TicTacToe(char playerSymbol,char cpuSymbol) : playerSymbol(playerSymbol),cpuSymbol(cpuSymbol)
+  TicTacToe3D(char playerSymbol,char cpuSymbol) 
   {
 	for(int i = 0; i < 3; i++)
     {
 	  for (int j = 0; j < 3; j++)   
 		
-		for(int k = 0; j < 3; j++)
+		for(int k = 0; k < 3; k++)
   	    {
           gameBoard[i][j][k] = '*';
         }
     }
   }
-
-
-
-
-
-
-
-
-
-
-
 };
 
 int main(void)
