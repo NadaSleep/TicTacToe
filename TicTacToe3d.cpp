@@ -214,6 +214,10 @@ return ' ';
   }
 };
 
+
+
+//New Thang
+
 class TicTacToeThreeD : public TicTacToe
 { private:
   char gameBoard3d[3][3][3];
@@ -222,14 +226,59 @@ class TicTacToeThreeD : public TicTacToe
   {
 	for(int i = 0; i < 3; i++)
     {
-	  for (int j = 0; j < 3; j++)   
-		
-		for(int k = 0; k < 3; k++)
+	  for (int j = 0; j < 3; j++) 
+      {
+        for(int k = 0; k < 3; k++)
   	    {
           gameBoard3d[i][j][k] = '*';
         }
+      }
     }
   }
+
+//Shows the current state of the board  
+void showBoard3D()
+  {
+    for (int i = 0; i < 3; i++)
+    {
+      for(int j = 0; j < 3; j++)
+      {
+        for(int k = 0; k < 3; k++)  
+       {
+          if (gameBoard3D[i][j][K] == ' ') 
+          {
+           cout << '*';
+          }
+          else 
+          {
+          cout << gameBoard[i][j][K];
+          }
+        cout << "";
+       }  
+      cout << endl;
+    } 
+   cout << endl;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 };
 
 
