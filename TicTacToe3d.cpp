@@ -218,43 +218,43 @@ return ' ';
 
 //New Thang Thang
 
-class TicTacToeThreeD : public TicTacToe
+class TicTacToe3D : public TicTacToe
 { 
   public:
-  char gameBoard3d[3][3][3];
+  char gameBoard3D[3][3][3];
   
-  TicTacToeThreeD(char playerSymbol,char cpuSymbol)
+  TicTacToe3D(char playerSymbol,char cpuSymbol) : TicTacToe(playerSymbol,cpuSymbol)
   {
-	for(int i = 0; i < 3; i++)
+	for(int x = 0; x < 3; x++)
     {
-	  for (int j = 0; j < 3; j++) 
+	  for (int y = 0; y < 3; y++) 
       {
-        for(int k = 0; k < 3; k++)
+        for(int z = 0; z < 3; z++)
   	    {
-          gameBoard3d[i][j][k] = '*';
+          gameBoard3D[x][y][z] = '*';
         }
       }
     }
   }
 
 //Shows the current state of the board  
-void showBoard3D()
+  void showBoard3D()
   {
-    for (int i = 0; i < 3; i++)
+    for (int x = 0; x < 3; x++)
     {
-      for(int j = 0; j < 3; j++)
+      for(int y = 0; y < 3; y++)
       {
-        for(int k = 0; k < 3; k++)  
+        for(int z = 0; z < 3; z++)  
        {
-          if (gameBoard3d[i][j][k] == ' ') 
+          if (gameBoard3D[x][y][z] == ' ') 
           {
            cout << '*';
           }
-          else 
+           else 
           {
-          cout << gameBoard3d[i][j][k];
+            cout << gameBoard3D[x][y][z];
           }
-        cout << "";
+        cout << " ";
        }  
       cout << endl;
     } 
@@ -262,37 +262,71 @@ void showBoard3D()
   }
 }
 
+//Players turn
+  void playerTurn3D()
+  {
+    int x,y,z;
+    
+    do
+    {
+      cout << "Choose Board 1-3:\n";
+        cin >> x;
+      
+      cout << "Choose Row 1-3:\n";
+        cin >> y;
+      
+      cout << "Choose Column 1-3:\n";
+        cin >> z;
+      
+      x--;
+      y--;
+	  z--;      
+
+	  if (gameBoard3D[x][y][z] != '*')  
+      {
+	    cout << "Please choose an open space.";
+      }
+      else
+      { 
+        gameBoard3D[x][y][z] = playerSymbol;
+	    break;	
+	  }
+    }
+    while (gameBoard3D[x][y][z] != '*'); 
+  }
+
+
 //Checks to see if there is a winner
-  char winnerCheck()
+  char winnerCheck3D()
 {
   
 //rows side 1    
 	for(int i = 0; i < 3; i++)
   	{
-	  if(gameBoard3d[i][0][0] != '*' && gameBoard3d[i][0][0] == gameBoard3d[i][1][0] && gameBoard3d[i][0][0] == gameBoard3d[i][2][0])
+	  if(gameBoard3D[i][0][0] != '*' && gameBoard3D[i][0][0] == gameBoard3D[i][1][0] && gameBoard3D[i][0][0] == gameBoard3D[i][2][0])
 	  {
 
-	  	return gameBoard3d[i][0][0];
+	  	return gameBoard3D[i][0][0];
 	  }
 	
 	}
 //row side 3
 	for(int i = 0; i < 3; i++)
   	{
-	  if(gameBoard3d[i][0][2] != '*' && gameBoard3d[i][0][2] == gameBoard3d[i][1][2] && gameBoard3d[i][0][2] == gameBoard3d[i][2][2])
+	  if(gameBoard3D[i][0][2] != '*' && gameBoard3D[i][0][2] == gameBoard3D[i][1][2] && gameBoard3D[i][0][2] == gameBoard3D[i][2][2])
 	  {
 
-	  	return gameBoard3d[i][0][3];
+	  	return gameBoard3D[i][0][3];
 	  }
 	
 	}
 ////row 3d
 //	for(int i = 0; i < 3; i++)
 //  	{
-//	  if(gameBoard3d[i][0][0] != '*' && gameBoard3d[i][0][0] == gameBoard3d[i][1][0] && gameBoard3d[i][0][0] == gameBoard3d[i][2][0])
+//	  if(gameBoard3D[i][0][0] != '*' && gameBoard3D[i][0][0] == gameBoard3D[i][1][0] && gameBoard3D[i][0][0] == gameBoard3D[i][2][0])
 //	  {
 //
-//	  	return gameBoard3d[i][0][];
+//	  	return gameBoard3D[i][0][];
 //	  }
 //	
 //	}
@@ -301,20 +335,20 @@ void showBoard3D()
 //columns side 1 	
   	for(int i = 0; i < 3; i++)
   	{
-	  if(gameBoard3d[0][i][0] != '*' && gameBoard3d[0][i][0] == gameBoard3d[1][i][0] && gameBoard3d[0][i][0] == gameBoard3d[2][i][0])
+	  if(gameBoard3D[0][i][0] != '*' && gameBoard3D[0][i][0] == gameBoard3D[1][i][0] && gameBoard3D[0][i][0] == gameBoard3D[2][i][0])
 	  {
 
-	    return gameBoard3d[0][i][0];
+	    return gameBoard3D[0][i][0];
 	  }
 	}
 //diagonals	
-    if(gameBoard3d[0][0][0] != '*' && gameBoard3d[0][0][0] == gameBoard3d[1][1][0] && gameBoard3d[0][0][0] == gameBoard3d[2][2][0])	
+    if(gameBoard3D[0][0][0] != '*' && gameBoard3D[0][0][0] == gameBoard3D[1][1][0] && gameBoard3D[0][0][0] == gameBoard3D[2][2][0])	
     {
-      return gameBoard3d[0][0][0];
+      return gameBoard3D[0][0][0];
 	} 	
-    if(gameBoard3d[0][2][0] != '*' && gameBoard3d[0][2][0] == gameBoard3d[1][1][0] && gameBoard3d[0][2][0] == gameBoard3d[2][0][0]) 
+    if(gameBoard3D[0][2][0] != '*' && gameBoard3D[0][2][0] == gameBoard3D[1][1][0] && gameBoard3D[0][2][0] == gameBoard3D[2][0][0]) 
     {
-	  return gameBoard3d[0][2][0];
+	  return gameBoard3D[0][2][0];
 	}
 return ' ';    
   }
@@ -348,9 +382,12 @@ cin.get();
 system("cls");
 
 //New game object
-TicTacToeThreeD game(playerSymbol,cpuSymbol);
+TicTacToe3D game(playerSymbol,cpuSymbol);
 game.showBoard3D();
-
+game.playerTurn3D();
+game.showBoard3D();
+cout << playerSymbol << endl;
+cout << game.gameBoard3D[2][2][2] << endl;
 
 
 //New game object
