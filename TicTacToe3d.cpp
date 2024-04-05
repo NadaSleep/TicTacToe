@@ -261,6 +261,26 @@ class TicTacToe3D : public TicTacToe
    cout << endl;
   }
 }
+//Checks open space 3D
+  int checkOpenSpaces3D()
+  {
+    int openSpaces = 27;
+    for (int x = 0; x < 3; x++)
+    {
+      for (int y = 0; y < 3; y++) 
+      {
+        for (int z = 0; z < 3; z++)
+		{
+		  if (gameBoard3D[y][y][z] != '*')
+          { 
+            openSpaces--;
+          }  
+        }
+      } 
+    return openSpaces;
+    }
+  }
+
 
 //Players turn
   void playerTurn3D()
@@ -293,6 +313,22 @@ class TicTacToe3D : public TicTacToe
 	  }
     }
     while (gameBoard3D[x][y][z] != '*'); 
+  }
+//cpu 3d Turn
+  void cpuTurn3D()
+  {
+    int x,y,z;
+    if(checkOpenSpaces() > 0)
+    {
+      do
+      {
+        x = rand() % 3;
+        y = rand() % 3;
+        z = rand() % 3;
+      }
+      while (gameBoard3D[x][y][z] != '*');
+      gameBoard3D[x][y][z] = cpuSymbol;
+    }
   }
 
 
@@ -352,6 +388,72 @@ class TicTacToe3D : public TicTacToe
 	}
 return ' ';    
   }
+
+  void humanPlay3D()
+  {
+    char winner;
+    int remainingSpaces3D;
+    
+	do {
+    showBoard3D();
+    playerTurn3D();
+    showBoard3D();
+    remainingSpaces3D = checkOpenSpaces3D();
+    winner = winnerCheck();
+    if (winner != ' ')
+    {	
+    cout << "The winner is " << winner << endl;    
+    break;
+    }
+    if ( winner == ' ' && remainingSpaces3D == 0)
+    {
+    cout << "Tie game!" << endl;
+    break;
+	}
+    cpuTurn3D();
+    winner = winnerCheck();
+    }
+    while (true);
+  }
+
+  void cpuPlay3D()
+  {
+    char winner;
+    int remainingSpaces;
+    
+    do {
+    cpuTurn3D();
+    showBoard3D();
+    remainingSpaces = checkOpenSpaces3D(); 
+	winner = winnerCheck3D();
+    if (winner != ' ')
+     {	
+    cout << "The winner is " << winner << endl;    
+    break;
+    }
+    if ( winner == ' ' && remainingSpaces == 0)
+    {
+    cout << "Tie game!" << endl;
+    break;
+	}
+    playerTurn3D();
+    showBoard3D();
+    winner = winnerCheck3D();
+    }
+    while (true);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
 };
 
 
@@ -386,8 +488,8 @@ TicTacToe3D game(playerSymbol,cpuSymbol);
 game.showBoard3D();
 game.playerTurn3D();
 game.showBoard3D();
-cout << playerSymbol << endl;
-cout << game.gameBoard3D[2][2][2] << endl;
+game.cpuPlay3D();
+
 
 
 //New game object
