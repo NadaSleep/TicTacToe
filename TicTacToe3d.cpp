@@ -7,7 +7,6 @@ TicTacToe game
 #include<string>
 #include<stdlib.h>
 #include<ctime>
-
 using namespace std;
 
 class TicTacToe
@@ -16,7 +15,9 @@ private:
 char gameBoard[3][3];
 
 public:
-  char playerSymbol,cpuSymbol;
+  TicTacToe(){}
+  
+char playerSymbol,cpuSymbol;
 //Creates the board and assigns a symbol to the player and cpu
   TicTacToe(char playerSymbol,char cpuSymbol) : playerSymbol(playerSymbol),cpuSymbol(cpuSymbol)
   {
@@ -218,10 +219,11 @@ return ' ';
 //New Thang Thang
 
 class TicTacToeThreeD : public TicTacToe
-{ private:
+{ 
+  public:
   char gameBoard3d[3][3][3];
   
-  void TicTacToe3D(char playerSymbol,char cpuSymbol)
+  TicTacToeThreeD(char playerSymbol,char cpuSymbol)
   {
 	for(int i = 0; i < 3; i++)
     {
@@ -244,13 +246,13 @@ void showBoard3D()
       {
         for(int k = 0; k < 3; k++)  
        {
-          if (gameBoard3D[i][j][K] == ' ') 
+          if (gameBoard3d[i][j][k] == ' ') 
           {
            cout << '*';
           }
           else 
           {
-          cout << gameBoard[i][j][K];
+          cout << gameBoard3d[i][j][k];
           }
         cout << "";
        }  
@@ -258,65 +260,70 @@ void showBoard3D()
     } 
    cout << endl;
   }
+}
 
 //Checks to see if there is a winner
   char winnerCheck()
-  {
-//rows    
+{
+  
+//rows side 1    
 	for(int i = 0; i < 3; i++)
   	{
-	  if(gameBoard[i][0][] != '*' && gameBoard[i][0][] == gameBoard[i][1][] && gameBoard[i][0][] == gameBoard[i][2][])
+	  if(gameBoard3d[i][0][0] != '*' && gameBoard3d[i][0][0] == gameBoard3d[i][1][0] && gameBoard3d[i][0][0] == gameBoard3d[i][2][0])
 	  {
 
-	  	return gameBoard[i][0][];
+	  	return gameBoard3d[i][0][0];
 	  }
 	
 	}
-//columns  	
-  	for(int i = 0; i < 3; i++)
+//row side 3
+	for(int i = 0; i < 3; i++)
   	{
-	  if(gameBoard[0][i][] != '*' && gameBoard[0][i][] == gameBoard[1][i][] && gameBoard[0][i][] == gameBoard[2][i][])
+	  if(gameBoard3d[i][0][2] != '*' && gameBoard3d[i][0][2] == gameBoard3d[i][1][2] && gameBoard3d[i][0][2] == gameBoard3d[i][2][2])
 	  {
 
-	    return gameBoard[0][i][];
+	  	return gameBoard3d[i][0][3];
+	  }
+	
+	}
+////row 3d
+//	for(int i = 0; i < 3; i++)
+//  	{
+//	  if(gameBoard3d[i][0][0] != '*' && gameBoard3d[i][0][0] == gameBoard3d[i][1][0] && gameBoard3d[i][0][0] == gameBoard3d[i][2][0])
+//	  {
+//
+//	  	return gameBoard3d[i][0][];
+//	  }
+//	
+//	}
+
+
+//columns side 1 	
+  	for(int i = 0; i < 3; i++)
+  	{
+	  if(gameBoard3d[0][i][0] != '*' && gameBoard3d[0][i][0] == gameBoard3d[1][i][0] && gameBoard3d[0][i][0] == gameBoard3d[2][i][0])
+	  {
+
+	    return gameBoard3d[0][i][0];
 	  }
 	}
 //diagonals	
-    if(gameBoard[0][0][] != '*' && gameBoard[0][0][] == gameBoard[1][1][] && gameBoard[0][0][] == gameBoard[2][2][])	
+    if(gameBoard3d[0][0][0] != '*' && gameBoard3d[0][0][0] == gameBoard3d[1][1][0] && gameBoard3d[0][0][0] == gameBoard3d[2][2][0])	
     {
-      return gameBoard[0][0][];
+      return gameBoard3d[0][0][0];
 	} 	
-    if(gameBoard[0][2][] != '*' && gameBoard[0][2][] == gameBoard[1][1][] && gameBoard[0][2][] == gameBoard[2][0][]) 
+    if(gameBoard3d[0][2][0] != '*' && gameBoard3d[0][2][0] == gameBoard3d[1][1][0] && gameBoard3d[0][2][0] == gameBoard3d[2][0][0]) 
     {
-	  return gameBoard[0][2][];
+	  return gameBoard3d[0][2][0];
 	}
 return ' ';    
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 };
+
 
 
 int main(void)
 {
-
 int startPlayer;
 char playerSymbol,cpuSymbol;
 
@@ -341,20 +348,26 @@ cin.get();
 system("cls");
 
 //New game object
-TicTacToe newGame(playerSymbol,cpuSymbol);
+TicTacToeThreeD game(playerSymbol,cpuSymbol);
+game.showBoard3D();
 
-//Depending on who goes first the game method is called
-startPlayer = newGame.startingPlayer();
-if (startPlayer == 1)
-      {
-        cout << "You have first turn.\n";
-        newGame.humanPlay();
-      }
-    else
-      {
-        cout << "CPU has first turn.\n";         
-        newGame.cpuPlay();
-      }
+
+
+//New game object
+//TicTacToe newGame(playerSymbol,cpuSymbol);
+//
+////Depending on who goes first the game method is called
+//startPlayer = newGame.startingPlayer();
+//if (startPlayer == 1)
+//      {
+//        cout << "You have first turn.\n";
+//        newGame.humanPlay();
+//      }
+//    else
+//      {
+//        cout << "CPU has first turn.\n";         
+//        newGame.cpuPlay();
+//      }
 
 return 0;	
 }
