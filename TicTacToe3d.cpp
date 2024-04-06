@@ -278,7 +278,7 @@ class TicTacToe3D : public TicTacToe
       {
         for (int z = 0; z < 3; z++)
 		{
-		  if (gameBoard3D[y][y][z] != '*')
+		  if (gameBoard3D[x][y][z] != '*')
           { 
             openSpaces--;
           }  
@@ -584,7 +584,7 @@ class TicTacToe3D : public TicTacToe
     }  
   } while (openSpaces > 0);
     winnerCheck3D();
-    cout << "Player with most points win!" << endl;
+    cout << "The player with the most points wins!" << endl;
     cout << "-X Points: " << xScore << " -O Points: " << oScore << endl;
 }
 
@@ -604,7 +604,7 @@ class TicTacToe3D : public TicTacToe
 
   } while (openSpaces > 0);
     winnerCheck3D();
-    cout << "Player with most points win!" << endl;
+    cout << "The player with the most points wins!" << endl;
     cout << "-X Points: " << xScore << " -O Points: " << oScore << endl;
  }
 };
@@ -614,8 +614,8 @@ int main(void)
 int startPlayer;
 char playerSymbol,cpuSymbol;
 
-cout << "Tic Tac Toe game\n";
-cout << "Choose a row and column to mark your spot. Mark three in a row by line or diagonal and you win.\n";
+cout << "3D Tic Tac Toe game\n";
+cout << "Now in 3D you must choose a board, row, and column to mark your spot. Mark three in a row by line or diagonal and you win.\n";
 cout << "\nPress enter to continue:";
 cin.get();
 system("cls");
