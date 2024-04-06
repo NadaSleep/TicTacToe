@@ -325,8 +325,8 @@ class TicTacToe3D : public TicTacToe
   void cpuTurn3D()
   {
     int x,y,z;
-    if(checkOpenSpaces() > 0)
-    {
+    //if(checkOpenSpaces() > 0)
+//    {
       do
       {
         x = rand() % 3;
@@ -335,7 +335,7 @@ class TicTacToe3D : public TicTacToe
       }
       while (gameBoard3D[x][y][z] != '*');
       gameBoard3D[x][y][z] = cpuSymbol;
-    }
+//    }
   }
 
 
@@ -349,14 +349,13 @@ class TicTacToe3D : public TicTacToe
 	  {
 	  char point = toupper(gameBoard3D[0][i][0]);
       if (point == 'X')
-      {
-        xScore++;
-      } 
-	  else
-      {
-        oScore++;
-      }
-      cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
+        {
+          xScore++;
+        } 
+	    else
+        {
+          oScore++;
+        }
 	  }
 	
 	}
@@ -367,14 +366,13 @@ class TicTacToe3D : public TicTacToe
 	  {
       char point = toupper(gameBoard3D[1][i][0]);
       if (point == 'X')
-      {
-        xScore++;
-      } 
-	  else
-      {
-        oScore++;
-      }
-      cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
+        {
+          xScore++;
+        }  
+	    else
+        {
+          oScore++;
+        }
 	  }
 	
 	}
@@ -385,14 +383,13 @@ class TicTacToe3D : public TicTacToe
 	  {
       char point = toupper(gameBoard3D[2][i][0]);
       if (point == 'X')
-      {
-        xScore++;
-      } 
-	  else
-      {
-        oScore++;
-      }
-      cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
+        {
+          xScore++;
+        } 
+	    else
+        {
+          oScore++;
+        }
 	  }
 	}
 
@@ -403,14 +400,13 @@ class TicTacToe3D : public TicTacToe
 	  {
       char point = toupper(gameBoard3D[0][0][i]);
       if (point == 'X')
-      {
-        xScore++;
-      } 
-	  else
-      {
-        oScore++;
-      }
-      cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
+        {
+          xScore++;
+        } 
+	    else
+        {
+          oScore++;
+        }
 	  }
 	}
 //columns board 2
@@ -420,14 +416,13 @@ class TicTacToe3D : public TicTacToe
 	  {
       char point = toupper(gameBoard3D[1][0][i]);
       if (point == 'X')
-      {
-        xScore++;
-      } 
-	  else
-      {
-        oScore++;
-      }
-      cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
+        {
+          xScore++;
+        } 
+	    else
+        {
+          oScore++;
+        }
 	  }
 	}
 //columns board 3
@@ -437,14 +432,13 @@ class TicTacToe3D : public TicTacToe
 	  {
       char point = toupper(gameBoard3D[2][0][i]);
       if (point == 'X')
-      {
-        xScore++;
-      } 
-	  else
-      {
-        oScore++;
-      }
-      cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
+        {
+          xScore++;
+        } 
+	    else
+        {
+          oScore++;
+        }
 	  }
 	}
 
@@ -460,7 +454,6 @@ class TicTacToe3D : public TicTacToe
       {
         oScore++;
       }
-      cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
     } 	
     if(gameBoard3D[0][0][2] != '*' && gameBoard3D[0][0][2] == gameBoard3D[0][1][1] && gameBoard3D[0][0][2] == gameBoard3D[0][2][0]) 
     {
@@ -473,7 +466,6 @@ class TicTacToe3D : public TicTacToe
       {
         oScore++;
       }
-      cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
 	}
 
 //diagonals board 2
@@ -488,7 +480,6 @@ class TicTacToe3D : public TicTacToe
       {
         oScore++;
       }
-      cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
 	} 	
     if(gameBoard3D[1][0][2] != '*' && gameBoard3D[1][0][2] == gameBoard3D[1][1][1] && gameBoard3D[1][0][2] == gameBoard3D[1][2][0]) 
     {
@@ -501,7 +492,6 @@ class TicTacToe3D : public TicTacToe
       {
         oScore++;
       }
-      cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
 	}
 //diagonals board 3
     if(gameBoard3D[2][0][0] != '*' && gameBoard3D[2][0][0] == gameBoard3D[2][1][1] && gameBoard3D[2][0][0] == gameBoard3D[2][2][2])	
@@ -515,7 +505,6 @@ class TicTacToe3D : public TicTacToe
       {
         oScore++;
       }
-      cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
 	} 	
     if(gameBoard3D[2][0][2] != '*' && gameBoard3D[2][0][2] == gameBoard3D[2][1][1] && gameBoard3D[2][0][2] == gameBoard3D[2][2][0]) 
     {
@@ -528,7 +517,6 @@ class TicTacToe3D : public TicTacToe
       {
         oScore++;
       }
-      cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
 	}
 
 //rows 3d
@@ -538,16 +526,15 @@ class TicTacToe3D : public TicTacToe
       {
         if(gameBoard3D[0][i][j] != '*' && gameBoard3D[0][i][j] == gameBoard3D[1][i][j] && gameBoard3D[0][i][j] == gameBoard3D[2][i][j])
         {
-        char point = toupper(gameBoard3D[0][i][j]);
-        if (point == 'X')
-        {
-          xScore++;
-        } 
-	    else
-        {
-          oScore++;
-        }
-        cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
+          char point = toupper(gameBoard3D[0][i][j]);
+          if (point == 'X')
+          {
+            xScore++;
+          }   
+	      else
+          {
+            oScore++;
+          }
         }
       }  
     }
@@ -564,7 +551,6 @@ class TicTacToe3D : public TicTacToe
       {
         oScore++;
       }
-      cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
 	} 	
 //diagonal 3d 2
     if(gameBoard3D[0][0][2] != '*' && gameBoard3D[0][0][2] == gameBoard3D[1][1][1] && gameBoard3D[0][0][2] == gameBoard3D[2][2][0])	
@@ -578,7 +564,6 @@ class TicTacToe3D : public TicTacToe
       {
         oScore++;
       }
-      cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
 	} 	  
   }
 
@@ -598,29 +583,30 @@ class TicTacToe3D : public TicTacToe
       openSpaces = checkOpenSpaces3D();
     }  
   } while (openSpaces > 0);
-    char winner = winnerCheck3D();
-    
-    cout << "X Points: " << xScore << "O Points: " << oScore << endl;
+    winnerCheck3D();
+    cout << "Player with most points win!" << endl;
+    cout << "-X Points: " << xScore << " -O Points: " << oScore << endl;
 }
 
   void cpuPlay3D()
   {
-    char winner;
-    int remainingSpaces;
-    
     do {
     cpuTurn3D();
-    showBoard3D();
-    winnerCheck3D();
+    showBoard3D();    
     openSpaces = checkOpenSpaces3D();
-    
-    if (openSpaces == 0)
-    {
-      cout << "Game Over X Points: " << xScore << "O Points: " << oScore << endl;
-      break;
+    if (openSpaces > 0)
+    {      
+      playerTurn3D();
+      showBoard3D();
+      cout << "----- CPU TURN" << endl;
+      openSpaces = checkOpenSpaces3D();
     }
-   }while (true);    
-  }
+
+  } while (openSpaces > 0);
+    winnerCheck3D();
+    cout << "Player with most points win!" << endl;
+    cout << "-X Points: " << xScore << " -O Points: " << oScore << endl;
+ }
 };
 
 int main(void)
