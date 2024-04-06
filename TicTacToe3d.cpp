@@ -220,6 +220,13 @@ return ' ';
 
 class TicTacToe3D : public TicTacToe
 { 
+  
+  private:
+  char winner;
+  int openSpaces;
+  int xScore = 0;
+  int oScore = 0;
+
   public:
   char gameBoard3D[3][3][3];
   
@@ -277,9 +284,9 @@ class TicTacToe3D : public TicTacToe
           }  
         }
       } 
-    return openSpaces;
     }
-  }
+  return openSpaces;
+}
 
 
 //Players turn 3D
@@ -333,12 +340,8 @@ class TicTacToe3D : public TicTacToe
 
 
 //Checks to see if there is a winner
-  char winnerCheck3D()
+  void winnerCheck3D()
 {
-  //Score variables
-  int xScore = 0;
-  int oScore = 0;
-
 //rows board 1    
 	for(int i = 0; i < 3; i++)
   	{
@@ -354,7 +357,6 @@ class TicTacToe3D : public TicTacToe
         oScore++;
       }
       cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
-      return point;
 	  }
 	
 	}
@@ -373,7 +375,6 @@ class TicTacToe3D : public TicTacToe
         oScore++;
       }
       cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
-      return point;
 	  }
 	
 	}
@@ -392,7 +393,6 @@ class TicTacToe3D : public TicTacToe
         oScore++;
       }
       cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
-      return point;
 	  }
 	}
 
@@ -411,7 +411,6 @@ class TicTacToe3D : public TicTacToe
         oScore++;
       }
       cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
-      return point;
 	  }
 	}
 //columns board 2
@@ -429,7 +428,6 @@ class TicTacToe3D : public TicTacToe
         oScore++;
       }
       cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
-      return point;
 	  }
 	}
 //columns board 3
@@ -447,7 +445,6 @@ class TicTacToe3D : public TicTacToe
         oScore++;
       }
       cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
-      return point;
 	  }
 	}
 
@@ -464,7 +461,6 @@ class TicTacToe3D : public TicTacToe
         oScore++;
       }
       cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
-      return point;
     } 	
     if(gameBoard3D[0][0][2] != '*' && gameBoard3D[0][0][2] == gameBoard3D[0][1][1] && gameBoard3D[0][0][2] == gameBoard3D[0][2][0]) 
     {
@@ -478,7 +474,6 @@ class TicTacToe3D : public TicTacToe
         oScore++;
       }
       cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
-      return point;
 	}
 
 //diagonals board 2
@@ -494,7 +489,6 @@ class TicTacToe3D : public TicTacToe
         oScore++;
       }
       cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
-      return point;
 	} 	
     if(gameBoard3D[1][0][2] != '*' && gameBoard3D[1][0][2] == gameBoard3D[1][1][1] && gameBoard3D[1][0][2] == gameBoard3D[1][2][0]) 
     {
@@ -508,7 +502,6 @@ class TicTacToe3D : public TicTacToe
         oScore++;
       }
       cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
-      return point;
 	}
 //diagonals board 3
     if(gameBoard3D[2][0][0] != '*' && gameBoard3D[2][0][0] == gameBoard3D[2][1][1] && gameBoard3D[2][0][0] == gameBoard3D[2][2][2])	
@@ -523,7 +516,6 @@ class TicTacToe3D : public TicTacToe
         oScore++;
       }
       cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
-      return point;
 	} 	
     if(gameBoard3D[2][0][2] != '*' && gameBoard3D[2][0][2] == gameBoard3D[2][1][1] && gameBoard3D[2][0][2] == gameBoard3D[2][2][0]) 
     {
@@ -537,7 +529,6 @@ class TicTacToe3D : public TicTacToe
         oScore++;
       }
       cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
-      return point;
 	}
 
 //rows 3d
@@ -557,7 +548,6 @@ class TicTacToe3D : public TicTacToe
           oScore++;
         }
         cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
-        return point;
         }
       }  
     }
@@ -575,7 +565,6 @@ class TicTacToe3D : public TicTacToe
         oScore++;
       }
       cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
-      return point;
 	} 	
 //diagonal 3d 2
     if(gameBoard3D[0][0][2] != '*' && gameBoard3D[0][0][2] == gameBoard3D[1][1][1] && gameBoard3D[0][0][2] == gameBoard3D[2][2][0])	
@@ -590,32 +579,29 @@ class TicTacToe3D : public TicTacToe
         oScore++;
       }
       cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
-      return point;
-	} 	
-return ' ';    
+	} 	  
   }
 
   void humanPlay3D()
   {
-    char winner;
-    int remainingSpaces3D;
-    
-	do {
+    do 
+    {
     showBoard3D();
     playerTurn3D();
+    cout << "-----" << endl;
     showBoard3D();
-    remainingSpaces3D = checkOpenSpaces3D();
-
-    if ( winner == ' ' && remainingSpaces3D == 0)
+    openSpaces = checkOpenSpaces3D(); 
+    if (openSpaces > 0)
     {
-    cout << "Game Over. Highest Score Wins!" << endl;
-    break;
-	}
-    cpuTurn3D();
-    winner = winnerCheck();
-    }
-    while (true);
-  }
+      cout << "----- CPU TURN" << endl;
+      cpuTurn3D();
+      openSpaces = checkOpenSpaces3D();
+    }  
+  } while (openSpaces > 0);
+    char winner = winnerCheck3D();
+    
+    cout << "X Points: " << xScore << "O Points: " << oScore << endl;
+}
 
   void cpuPlay3D()
   {
@@ -625,23 +611,15 @@ return ' ';
     do {
     cpuTurn3D();
     showBoard3D();
-    remainingSpaces = checkOpenSpaces3D(); 
-	winner = winnerCheck3D();
-    if (winner != ' ')
-     {	
-    cout << "The winner is " << winner << endl;    
-    break;
-    }
-    if ( winner == ' ' && remainingSpaces == 0)
+    winnerCheck3D();
+    openSpaces = checkOpenSpaces3D();
+    
+    if (openSpaces == 0)
     {
-    cout << "Tie game!" << endl;
-    break;
-	}
-    playerTurn3D();
-    showBoard3D();
-    winner = winnerCheck3D();
+      cout << "Game Over X Points: " << xScore << "O Points: " << oScore << endl;
+      break;
     }
-    while (true);
+   }while (true);    
   }
 };
 
@@ -670,7 +648,7 @@ else {
 cin.get();
 system("cls");
 
-New game object
+//New game object
 TicTacToe3D newGame(playerSymbol,cpuSymbol);
 
 //Depending on who goes first the game method is called
@@ -678,12 +656,12 @@ startPlayer = newGame.startingPlayer();
 if (startPlayer == 1)
       {
         cout << "You have first turn.\n";
-        newGame.humanPlay();
+        newGame.humanPlay3D();
       }
     else
       {
         cout << "CPU has first turn.\n";         
-        newGame.cpuPlay();
+        newGame.cpuPlay3D();
       }
 
 return 0;	
