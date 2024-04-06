@@ -1,7 +1,7 @@
 /*
 Tyler Sexton
-Lab 9
-TicTacToe game
+Lab 10
+3D TicTacToe game
 */
 #include<iostream>
 #include<string>
@@ -216,7 +216,7 @@ return ' ';
 
 
 
-//New Thang Thang
+//New class for a 3D TTT game
 
 class TicTacToe3D : public TicTacToe
 { 
@@ -237,7 +237,7 @@ class TicTacToe3D : public TicTacToe
     }
   }
 
-//Shows the current state of the board  
+//Shows the current state of the board in 3D 
   void showBoard3D()
   {
     for (int x = 0; x < 3; x++)
@@ -282,7 +282,7 @@ class TicTacToe3D : public TicTacToe
   }
 
 
-//Players turn
+//Players turn 3D
   void playerTurn3D()
   {
     int x,y,z;
@@ -314,7 +314,7 @@ class TicTacToe3D : public TicTacToe
     }
     while (gameBoard3D[x][y][z] != '*'); 
   }
-//cpu 3d Turn
+//cpu 3D Turn
   void cpuTurn3D()
   {
     int x,y,z;
@@ -335,57 +335,263 @@ class TicTacToe3D : public TicTacToe
 //Checks to see if there is a winner
   char winnerCheck3D()
 {
-  
-//rows side 1    
+  //Score variables
+  int xScore = 0;
+  int oScore = 0;
+
+//rows board 1    
 	for(int i = 0; i < 3; i++)
   	{
-	  if(gameBoard3D[i][0][0] != '*' && gameBoard3D[i][0][0] == gameBoard3D[i][1][0] && gameBoard3D[i][0][0] == gameBoard3D[i][2][0])
+	  if(gameBoard3D[0][i][0] != '*' && gameBoard3D[0][i][0] == gameBoard3D[0][i][1] && gameBoard3D[0][i][0] == gameBoard3D[0][i][2])
 	  {
-
-	  	return gameBoard3D[i][0][0];
+	  char point = toupper(gameBoard3D[0][i][0]);
+      if (point == 'X')
+      {
+        xScore++;
+      } 
+	  else
+      {
+        oScore++;
+      }
+      cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
+      return point;
 	  }
 	
 	}
-//row side 3
+//row board 2
 	for(int i = 0; i < 3; i++)
   	{
-	  if(gameBoard3D[i][0][2] != '*' && gameBoard3D[i][0][2] == gameBoard3D[i][1][2] && gameBoard3D[i][0][2] == gameBoard3D[i][2][2])
+	  if(gameBoard3D[1][i][0] != '*' && gameBoard3D[1][i][0] == gameBoard3D[1][i][1] && gameBoard3D[1][i][0] == gameBoard3D[1][i][2])
 	  {
-
-	  	return gameBoard3D[i][0][3];
+      char point = toupper(gameBoard3D[1][i][0]);
+      if (point == 'X')
+      {
+        xScore++;
+      } 
+	  else
+      {
+        oScore++;
+      }
+      cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
+      return point;
 	  }
 	
 	}
-////row 3d
-//	for(int i = 0; i < 3; i++)
-//  	{
-//	  if(gameBoard3D[i][0][0] != '*' && gameBoard3D[i][0][0] == gameBoard3D[i][1][0] && gameBoard3D[i][0][0] == gameBoard3D[i][2][0])
-//	  {
-//
-//	  	return gameBoard3D[i][0][];
-//	  }
-//	
-//	}
+//row board 3
+	for(int i = 0; i < 3; i++)
+  	{
+	  if(gameBoard3D[2][i][0] != '*' && gameBoard3D[2][i][0] == gameBoard3D[2][i][1] && gameBoard3D[2][i][0] == gameBoard3D[2][i][2])
+	  {
+      char point = toupper(gameBoard3D[2][i][0]);
+      if (point == 'X')
+      {
+        xScore++;
+      } 
+	  else
+      {
+        oScore++;
+      }
+      cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
+      return point;
+	  }
+	}
 
-
-//columns side 1 	
+//columns board 1	
   	for(int i = 0; i < 3; i++)
   	{
-	  if(gameBoard3D[0][i][0] != '*' && gameBoard3D[0][i][0] == gameBoard3D[1][i][0] && gameBoard3D[0][i][0] == gameBoard3D[2][i][0])
+	  if(gameBoard3D[0][0][i] != '*' && gameBoard3D[0][0][i] == gameBoard3D[0][1][i] && gameBoard3D[0][0][i] == gameBoard3D[0][2][i])
 	  {
-
-	    return gameBoard3D[0][i][0];
+      char point = toupper(gameBoard3D[0][0][i]);
+      if (point == 'X')
+      {
+        xScore++;
+      } 
+	  else
+      {
+        oScore++;
+      }
+      cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
+      return point;
 	  }
 	}
-//diagonals	
-    if(gameBoard3D[0][0][0] != '*' && gameBoard3D[0][0][0] == gameBoard3D[1][1][0] && gameBoard3D[0][0][0] == gameBoard3D[2][2][0])	
-    {
-      return gameBoard3D[0][0][0];
-	} 	
-    if(gameBoard3D[0][2][0] != '*' && gameBoard3D[0][2][0] == gameBoard3D[1][1][0] && gameBoard3D[0][2][0] == gameBoard3D[2][0][0]) 
-    {
-	  return gameBoard3D[0][2][0];
+//columns board 2
+    for(int i = 0; i < 3; i++)
+  	{
+	  if(gameBoard3D[1][0][i] != '*' && gameBoard3D[1][0][i] == gameBoard3D[1][1][i] && gameBoard3D[1][0][i] == gameBoard3D[1][2][i])
+	  {
+      char point = toupper(gameBoard3D[1][0][i]);
+      if (point == 'X')
+      {
+        xScore++;
+      } 
+	  else
+      {
+        oScore++;
+      }
+      cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
+      return point;
+	  }
 	}
+//columns board 3
+    for(int i = 0; i < 3; i++)
+  	{
+	  if(gameBoard3D[2][0][i] != '*' && gameBoard3D[2][0][i] == gameBoard3D[2][1][i] && gameBoard3D[2][0][i] == gameBoard3D[2][2][i])
+	  {
+      char point = toupper(gameBoard3D[2][0][i]);
+      if (point == 'X')
+      {
+        xScore++;
+      } 
+	  else
+      {
+        oScore++;
+      }
+      cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
+      return point;
+	  }
+	}
+
+//diagonals board 1
+    if(gameBoard3D[0][0][0] != '*' && gameBoard3D[0][0][0] == gameBoard3D[0][1][1] && gameBoard3D[0][0][0] == gameBoard3D[0][2][2])	
+    {
+      char point = toupper(gameBoard3D[0][0][0]);
+      if (point == 'X')
+      {
+        xScore++;
+      } 
+	  else
+      {
+        oScore++;
+      }
+      cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
+      return point;
+    } 	
+    if(gameBoard3D[0][0][2] != '*' && gameBoard3D[0][0][2] == gameBoard3D[0][1][1] && gameBoard3D[0][0][2] == gameBoard3D[0][2][0]) 
+    {
+	  char point = toupper(gameBoard3D[0][0][2]);
+      if (point == 'X')
+      {
+        xScore++;
+      } 
+	  else
+      {
+        oScore++;
+      }
+      cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
+      return point;
+	}
+
+//diagonals board 2
+    if(gameBoard3D[1][0][0] != '*' && gameBoard3D[1][0][0] == gameBoard3D[1][1][1] && gameBoard3D[1][0][0] == gameBoard3D[1][2][2])	
+    {
+      char point = toupper(gameBoard3D[1][0][0]);
+      if (point == 'X')
+      {
+        xScore++;
+      } 
+	  else
+      {
+        oScore++;
+      }
+      cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
+      return point;
+	} 	
+    if(gameBoard3D[1][0][2] != '*' && gameBoard3D[1][0][2] == gameBoard3D[1][1][1] && gameBoard3D[1][0][2] == gameBoard3D[1][2][0]) 
+    {
+	  char point = toupper(gameBoard3D[1][0][2]);
+      if (point == 'X')
+      {
+        xScore++;
+      } 
+	  else
+      {
+        oScore++;
+      }
+      cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
+      return point;
+	}
+//diagonals board 3
+    if(gameBoard3D[2][0][0] != '*' && gameBoard3D[2][0][0] == gameBoard3D[2][1][1] && gameBoard3D[2][0][0] == gameBoard3D[2][2][2])	
+    {
+      char point = toupper(gameBoard3D[2][0][0]);
+      if (point == 'X')
+      {
+        xScore++;
+      } 
+	  else
+      {
+        oScore++;
+      }
+      cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
+      return point;
+	} 	
+    if(gameBoard3D[2][0][2] != '*' && gameBoard3D[2][0][2] == gameBoard3D[2][1][1] && gameBoard3D[2][0][2] == gameBoard3D[2][2][0]) 
+    {
+	  char point = toupper(gameBoard3D[2][0][2]);
+      if (point == 'X')
+      {
+        xScore++;
+      } 
+	  else
+      {
+        oScore++;
+      }
+      cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
+      return point;
+	}
+
+//rows 3d
+    for (int i = 0; i < 3; i++)
+    {
+      for (int j = 0; j < 3; j++)
+      {
+        if(gameBoard3D[0][i][j] != '*' && gameBoard3D[0][i][j] == gameBoard3D[1][i][j] && gameBoard3D[0][i][j] == gameBoard3D[2][i][j])
+        {
+        char point = toupper(gameBoard3D[0][i][j]);
+        if (point == 'X')
+        {
+          xScore++;
+        } 
+	    else
+        {
+          oScore++;
+        }
+        cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
+        return point;
+        }
+      }  
+    }
+
+//diagonal 3d 1
+    if(gameBoard3D[0][0][0] != '*' && gameBoard3D[0][0][0] == gameBoard3D[1][1][1] && gameBoard3D[0][0][0] == gameBoard3D[2][2][2])	
+    {
+      char point = toupper(gameBoard3D[0][0][0]);
+      if (point == 'X')
+      {
+        xScore++;
+      } 
+	  else
+      {
+        oScore++;
+      }
+      cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
+      return point;
+	} 	
+//diagonal 3d 2
+    if(gameBoard3D[0][0][2] != '*' && gameBoard3D[0][0][2] == gameBoard3D[1][1][1] && gameBoard3D[0][0][2] == gameBoard3D[2][2][0])	
+    {
+      char point = toupper(gameBoard3D[0][0][2]);
+      if (point == 'X')
+      {
+        xScore++;
+      } 
+	  else
+      {
+        oScore++;
+      }
+      cout << "X SCORE: " << xScore << "O SCORE: " << oScore << endl;
+      return point;
+	} 	
 return ' ';    
   }
 
@@ -399,15 +605,10 @@ return ' ';
     playerTurn3D();
     showBoard3D();
     remainingSpaces3D = checkOpenSpaces3D();
-    winner = winnerCheck();
-    if (winner != ' ')
-    {	
-    cout << "The winner is " << winner << endl;    
-    break;
-    }
+
     if ( winner == ' ' && remainingSpaces3D == 0)
     {
-    cout << "Tie game!" << endl;
+    cout << "Game Over. Highest Score Wins!" << endl;
     break;
 	}
     cpuTurn3D();
@@ -442,21 +643,7 @@ return ' ';
     }
     while (true);
   }
-
-
-
-
-
-
-
-
-
-
-
-
 };
-
-
 
 int main(void)
 {
@@ -483,30 +670,21 @@ else {
 cin.get();
 system("cls");
 
-//New game object
-TicTacToe3D game(playerSymbol,cpuSymbol);
-game.showBoard3D();
-game.playerTurn3D();
-game.showBoard3D();
-game.cpuPlay3D();
+New game object
+TicTacToe3D newGame(playerSymbol,cpuSymbol);
 
-
-
-//New game object
-//TicTacToe newGame(playerSymbol,cpuSymbol);
-//
-////Depending on who goes first the game method is called
-//startPlayer = newGame.startingPlayer();
-//if (startPlayer == 1)
-//      {
-//        cout << "You have first turn.\n";
-//        newGame.humanPlay();
-//      }
-//    else
-//      {
-//        cout << "CPU has first turn.\n";         
-//        newGame.cpuPlay();
-//      }
+//Depending on who goes first the game method is called
+startPlayer = newGame.startingPlayer();
+if (startPlayer == 1)
+      {
+        cout << "You have first turn.\n";
+        newGame.humanPlay();
+      }
+    else
+      {
+        cout << "CPU has first turn.\n";         
+        newGame.cpuPlay();
+      }
 
 return 0;	
 }
