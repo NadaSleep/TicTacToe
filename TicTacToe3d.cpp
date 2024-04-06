@@ -567,6 +567,7 @@ class TicTacToe3D : public TicTacToe
 	} 	  
   }
 
+//Player goes first in 3D game
   void humanPlay3D()
   {
     do 
@@ -588,6 +589,7 @@ class TicTacToe3D : public TicTacToe
     cout << "-X Points: " << xScore << " -O Points: " << oScore << endl;
 }
 
+//CPU goes first in 3D game
   void cpuPlay3D()
   {
     do {
@@ -634,7 +636,7 @@ else {
 cin.get();
 system("cls");
 
-//New game object
+//New game object for 3D TTT
 TicTacToe3D newGame(playerSymbol,cpuSymbol);
 
 //Depending on who goes first the game method is called
